@@ -5,10 +5,10 @@ Create an app that will allow a teacher to checkout books in thier classroom to 
 It will need 2 database tables, students and books
 
 Students have many books
-columns for name, datestamp for when they checked out the book
+columns for name, date checked out
 
 Books belong to a student
-columns for title, author, genre, datestamp for when it was checked out?
+columns for title, author, genre, student id
 
 Book: 
 Index page: Shows a list of books in the classroom library
@@ -20,4 +20,4 @@ Student:
 Index page: Shows a list of current students
 Show page:  Shows student name and which books then have checked out.  Includes the date they checked it out.
 New page:  Add a new student here
-Delete:  Remove students who have left the class
+Delete:  Remove students who have left the classcd mkdir
