@@ -4,4 +4,8 @@ class BooksController < ApplicationController
     "Hello World"
   end
 
+  get '/books/new' do
+    erb :'/books/new'
+  end
+
 end
