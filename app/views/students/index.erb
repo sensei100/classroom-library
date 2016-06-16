@@ -1,1 +1,12 @@
-"Hello World"
+<h1>Current Students</h1>
+
+<br>
+
+<h2>Click on a student's name to see what they have checked out.</h2>
+
+<br>
+
+<% @students.each do |student| %>
+  <a href="/students/<%= student.id %>"><%= student.name %></a>
+  <br>
+<% end %>

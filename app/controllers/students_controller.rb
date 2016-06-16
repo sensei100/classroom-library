@@ -1,6 +1,7 @@
 class StudentsController < ApplicationController
 
   get '/students' do
+    @students = Student.all
     erb :'/students/index'
   end
 
@@ -9,7 +10,13 @@ class StudentsController < ApplicationController
   end
 
   post '/students' do
-    erb :'/students/index'
+    @student = Student.create(name: params[:student_name])
+    @student.save
+    redirect to "/students/#{@student.id}"
+  end
+
+  get '/students/:id' do
+    erb :'/students/show'
   end
 
 end
