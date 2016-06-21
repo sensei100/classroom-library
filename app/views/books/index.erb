@@ -1,0 +1,8 @@
+<h1>Classroom Library</h1>
+<h2>Which book would you like to view?</h2>
+
+  <ul>
+  <% Book.all.each do |book| %>
+  <li><a href="/books/<%= book.id %>"><%= book.name %></a></li>
+  <% end %>
+  </ul>

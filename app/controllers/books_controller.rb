@@ -5,6 +5,6 @@ class BooksController < ApplicationController
   end
 
   get '/books/index' do
-    erb :'books/show'
+    erb :'books/index'
   end
 end
