@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160621152047) do
+ActiveRecord::Schema.define(version: 20160621155126) do
 
   create_table "books", force: :cascade do |t|
     t.string  "title"
@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 20160621152047) do
   end
 
   create_table "students", force: :cascade do |t|
-    t.string "name"
-    t.string "checked_out"
+    t.string  "name"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
