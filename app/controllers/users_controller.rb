@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     if user.username != "" && user.email != ""
       user.save
       session[:id] = user.id
-      redirect to "/books/index"
+      redirect to "/welcome"
     else
       redirect to '/signup'
     end
@@ -26,10 +26,13 @@ class UsersController < ApplicationController
     @user = User.find_by(:username => params[:username])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect "/books/index"
+      redirect "/welcome"
     else
       erb :login
     end
   end
 
+  get '/welcome' do
+    erb :welcome
+  end
 end

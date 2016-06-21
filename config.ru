@@ -8,4 +8,5 @@ use Rack::MethodOverride
 use BooksController
 use UsersController
 use StudentsController
+use LoansController
 run ApplicationController
