@@ -6,7 +6,9 @@
 
 <br>
 
-<% @students.each do |student| %>
-  <a href="/students/<%= student.id %>"><%= student.name %></a>
+<ul>
+<% Student.all.each do |student| %>
+  <li><a href="/students/<%= student.id %>"><%= student.name %></a></li>
   <br>
 <% end %>
+</ul>

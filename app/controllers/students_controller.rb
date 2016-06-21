@@ -16,6 +16,7 @@ class StudentsController < ApplicationController
   end
 
   get '/students/:id' do
+    @student = Student.find_by_id(params[:id])
     erb :'/students/show'
   end
 
