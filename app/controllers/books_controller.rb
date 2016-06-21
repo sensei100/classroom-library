@@ -15,4 +15,16 @@ class BooksController < ApplicationController
     erb :'books/index'
     end
   end
+
+  post '/books' do
+    @book = Book.create(:title => params[:book])
+    @book.save
+    redirect "/books/#{@book.id}"
+  end
+
+  get '/books/:id' do
+    @book = Book.find_by_id(params[:id])
+    erb :'books/show'
+  end
+
 end
