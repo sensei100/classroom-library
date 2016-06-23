@@ -15,8 +15,8 @@ class StudentsController < ApplicationController
     redirect to "/students/#{@student.id}"
   end
 
-  get '/students/:id' do
-    @student = Student.find_by_id(params[:id])
+  get '/students/:slug' do
+    @student = Student.find_by_slug(params[:slug])
     erb :'/students/show'
   end
 
