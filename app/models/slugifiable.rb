@@ -1,9 +1,10 @@
 module Slugifiable
   module InstanceMethods
     def slug
-      self.name.gsub(" ","-").downcase
+      self.name.to_s.gsub(" ","-").downcase
     end
   end
+
 
   module ClassMethods
     def find_by_slug(slug)

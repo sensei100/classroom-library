@@ -12,7 +12,7 @@ class StudentsController < ApplicationController
   post '/students' do
     @student = Student.create(name: params[:student_name])
     @student.save
-    redirect to "/students/#{@student.id}"
+    redirect to "/students/#{@student.slug}"
   end
 
   get '/students/:slug' do
