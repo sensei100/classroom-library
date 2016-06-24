@@ -17,9 +17,9 @@ class BooksController < ApplicationController
   end
 
   post '/books' do
-    @book = Book.create(:title => params[:book])
+    @book = Book.create(:name => params[:book])
     @book.save
-    redirect "/books/#{@book.id}"
+    redirect "/books/#{@book.slug}"
   end
 
   get '/books/:slug' do
