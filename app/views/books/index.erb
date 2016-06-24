@@ -3,7 +3,7 @@
 
   <ul>
   <% Book.all.each do |book| %>
-  <li><a href="/books/<%= book.name %>"><%= book.name %></a></li>
+  <li><a href="/books/<%= book.slug %>"><%= book.name %></a></li>
   <% end %>
   </ul>
 
