@@ -30,7 +30,7 @@
 
 <p>To delete the book, click the button below.</p>
 
-<form method="post" action="/books/<%=@book.name%>/delete">
+<form method="post" action="/books/<%=@book.slug %>/delete">
   <input id="hidden" type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete">
 </form>
