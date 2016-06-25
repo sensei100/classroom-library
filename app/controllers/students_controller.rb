@@ -10,14 +10,18 @@ class StudentsController < ApplicationController
   end
 
   post '/students' do
-    @student = Student.create(name: params[:student_name])
-    @student.save
+    @student = Student.create(name: params[:name])
     redirect to "/students/#{@student.slug}"
   end
 
-  get '/students/:slug' do
-    @student = Student.find_by_slug(params[:slug])
+  get '/students/:name' do
+    @student = Student.find_by_name(params[:name])
     erb :'/students/show'
   end
 
+  delete '/students/:name/delete' do
+    @student = Student.find_by_name(params[:name])
+    @student.delete
+    redirect to '/students'
+  end
 end
