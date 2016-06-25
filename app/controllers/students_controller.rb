@@ -24,7 +24,6 @@ class StudentsController < ApplicationController
     erb :'students/edit'
   end
 
-
   patch '/students/:name' do
     @student = Student.find_by_name(params[:name])
     @student.save

@@ -32,4 +32,22 @@ class BooksController < ApplicationController
     @book.update(params[:book])
   end
 
+  get '/books/:slug/edit' do
+    @book = Book.find_by_slug(params[:slug])
+    erb :'books/edit'
+  end
+
+  patch '/books/:slug' do
+    @book = Book.find_by_slug(params[:slug])
+    @book.save
+
+    redirect to "/books/#{@book.slug}"
+  end
+
+  delete '/books/:slug/delete' do
+    @book = Book.find_by_slug(params[:slug])
+    @book.delete
+    redirect to '/books'
+  end
+
 end

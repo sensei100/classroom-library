@@ -1,0 +1,36 @@
+<h1>Use the form below to edit a book</h1>
+
+<br>
+
+<form method="post" action="/books/<%= @book.slug %>">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+
+  <label for="name">Name:</label>
+  <input type="text" name="name" id="name" value="<%= @book.name %>">
+
+  <br>
+
+  <label for="author">Author:</label>
+  <input type="text" name="author" id="author" value="<%= @book.author %>">
+
+  <br>
+
+  <label for="genre">Genre:</label>
+  <input type="text" name="genre" id="genre" value="<%= @book.genre %>">
+
+  <br>
+
+  <input type="submit" value="Submit">
+
+  <br>
+  <br>
+  <br>
+
+</form>
+
+<p>To delete the book, click the button below.</p>
+
+<form method="post" action="/books/<%=@book.name%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete">
+</form>
