@@ -30,6 +30,10 @@ class BooksController < ApplicationController
   post '/books/:slug' do
     @book = Book.find_by_slug(params[:slug])
     @book.update(params[:book])
+    @book.author = params[:author]
+    @book.genre = params[:genre]
+    @book.save
+    redirect "/books/#{@book.slug}"
   end
 
   get '/books/:slug/edit' do
@@ -39,6 +43,8 @@ class BooksController < ApplicationController
 
   patch '/books/:slug' do
     @book = Book.find_by_slug(params[:slug])
+    @book.author = params[:author]
+    @book.genre = params[:genre]
     @book.save
 
     redirect to "/books/#{@book.slug}"
