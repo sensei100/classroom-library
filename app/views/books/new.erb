@@ -4,27 +4,33 @@
 
 <form method="post" action="/books">
 
-  <label for="name">Title:</label>
-  <input type="text" name="name" id="name">
-
-  <br>
-  <br>
-
-   <label for="author">Author Name:</label>
-   <input type="text" name="author" id="author">
-  
-  <br>
-  <br>
-
-  <label for="genre">Genre:</label>
-  <input type="text" name="genre" id="genre">
-
-  <br>
-  <br>
-
-
-
+  <div class="row">
+    <div class="col-md-1">
+      <label for="name">Title:</label>
+    </div>
+    <div class="col-md-6">
+      <input type="text" name="name" id="name">
+    </div>
+  </div>
  
+  <div class="row">
+    <div class="col-md-1">
+     <label for="author">Author:</label>
+    </div>
+    <div class="col-md-6">
+      <input type="text" name="author" id="author">
+    </div>
+  </div>
+ 
+  <div class="row">
+    <div class="col-md-1">
+      <label for="genre">Genre:</label>
+    </div>
+    <div class="col-md-6">
+      <input type="text" name="genre" id="genre">
+    </div>
+  </div>
+
   <input type="submit" value="Create">
 
  </form>
