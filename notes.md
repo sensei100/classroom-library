@@ -4,6 +4,8 @@ Create an app that will allow a teacher to checkout books in thier classroom to 
 
 It will need 2 database tables, students and books
 
+Will also need a table and controllers for users?
+
 Students have many books
 columns for name, date checked out
 

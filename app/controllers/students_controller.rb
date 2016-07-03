@@ -20,7 +20,7 @@ class StudentsController < ApplicationController
   end
 
   get '/students/:name/edit' do
-    @student = Student.find_by_name(params[:anme])
+    @student = Student.find_by_name(params[:name])
     erb :'students/edit'
   end
 

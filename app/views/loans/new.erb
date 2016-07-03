@@ -4,7 +4,9 @@
 
 <h2>Click on the title that you would like to check out</h2>
 
-<form method="post" action="/books/index">
+<form method="post" action="/books/<%= @book.slug %>">
+
+  <input type="hidden" name="_method" value="patch">
 
   <% Book.all.each do |book| %>
 

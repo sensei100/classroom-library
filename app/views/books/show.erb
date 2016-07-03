@@ -14,4 +14,31 @@
 
 <br>
 
-<h2>Currently Checked out to:</h2>
+<h2>Currently Checked out to:<%= @book.checked_out %></h2>
+
+<br>
+<br>
+
+<h1>Check Out this book</h1>
+
+<br>
+
+<h2>Click on the title that you would like to check out</h2>
+
+<form method="post" action="/books/<%= @book.slug %>">
+
+  <input type="hidden" name="_method" value="patch">
+
+<h2>Who is checking this book out?</h2>
+
+  <% Student.all.each do |student| %>
+
+    <input type="radio" name="<%= @lendee %>" value="<student.name %>" id="<%= student.id %>"><%= student.name %></input><br>
+
+  <% end %>
+
+  <br>
+
+  <input type="submit" name="Check Out">
+
+</form>
