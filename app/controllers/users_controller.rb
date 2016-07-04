@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
 
   get '/signup' do
+    if !logged_in?
       erb :signup
+    else
+      redirect to '/welcome'
+    end
   end
 
   post '/signup' do
@@ -11,7 +15,7 @@ class UsersController < ApplicationController
     user = User.create(username: params[:username], email: params[:email], password: params[:password])
     if user.username != "" && user.email != ""
       user.save
-      session[:id] = user.id
+      session[:user_id] = user.id
       redirect to "/welcome"
     else
       redirect to '/signup'
@@ -19,7 +23,11 @@ class UsersController < ApplicationController
   end
 
   get '/login' do
+    if logged_in?
+      redirect to '/welcome'
+    else
       erb :login
+    end
   end
 
   post '/login' do
