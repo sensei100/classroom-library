@@ -18,18 +18,27 @@ class BooksController < ApplicationController
   end
 
   post '/books' do
-    @book = Book.create(name: params[:name], author: params[:author], genre: params[:genre])
-    redirect "/books/#{@book.slug}"
+    @user = current_user
+    @book = Book.create(name: params[:name], author: params[:author], genre: params[:genre], user_id: session[:user_id])
+    if @book.save
+      redirect "/books/#{@book.slug}"
+    else
+      redirect to '/books/new'
+    end
   end
 
   get '/books/:slug' do
     @book = Book.find_by_slug(params[:slug])
-    erb :'books/show'
+    if logged_in?
+      erb :'books/show'
+    else
+      redirect to '/login'
+    end
   end
 
   post '/books/:slug' do
     @book = Book.find_by_slug(params[:slug])
-    @book.update(params[:book])
+    @book.update(book: params[:book])
     @book.author = params[:author]
     @book.genre = params[:genre]
     @book.user_id = params[:user_id]
@@ -40,7 +49,11 @@ class BooksController < ApplicationController
 
   get '/books/:slug/edit' do
     @book = Book.find_by_slug(params[:slug])
-    erb :'books/edit'
+    if logged_in?
+      erb :'books/edit'
+    else
+      redirect to '/login'
+    end
   end
 
   patch '/books/:slug' do
