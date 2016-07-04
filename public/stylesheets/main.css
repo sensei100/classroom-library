@@ -92,11 +92,12 @@ Font
     height: 40px;
     padding: 5px;
     margin-top: 10px;
+    width: 300px;
   }
 
-
-  .form_text {
-    margin-right: 600px;
+  #add_student {
+    margin-left: 20px;
+    margin-bottom: 50px;
   }
 
   input[type=radio], input[type=checkbox] {
@@ -104,8 +105,14 @@ Font
   }
 
   a {
-    color: #1C5E6C;
-    font-weight: bold;
+    color: #579EA4;;
+    font-size: 20px;
+    line-height: 30px;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: #002F3F ;
   }
 
   .branding {
