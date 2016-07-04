@@ -4,5 +4,6 @@ class Book < ActiveRecord::Base
   extend Slugifiable::ClassMethods
 
   belongs_to :user
+  validates_presence_of :title, :author, :genre
   
 end
