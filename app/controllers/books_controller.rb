@@ -4,7 +4,7 @@ class BooksController < ApplicationController
    if !logged_in?
       redirect to '/login'
     else
-      @books = Book.all
+      @books = current_user.books
       erb :'books/index'
     end
   end
@@ -19,7 +19,7 @@ class BooksController < ApplicationController
 
   post '/books' do
     @user = current_user
-    @book = User.books.create(name: params[:name], author: params[:author], genre: params[:genre], user_id: session[:user_id], checked_out: params[:checked_out], student_id: params[:student_id]) 
+    @book = @user.books.create(name: params[:name], author: params[:author], genre: params[:genre]) 
     if @book.save
       redirect "/books/#{@book.slug}"
     else
