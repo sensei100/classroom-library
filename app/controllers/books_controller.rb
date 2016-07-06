@@ -19,7 +19,7 @@ class BooksController < ApplicationController
 
   post '/books' do
     @user = current_user
-    @book = Book.create(name: params[:name], author: params[:author], genre: params[:genre], user_id: session[:user_id], checked_out: params[:checked_out], student_id: params[:student_id]) 
+    @book = User.books.create(name: params[:name], author: params[:author], genre: params[:genre], user_id: session[:user_id], checked_out: params[:checked_out], student_id: params[:student_id]) 
     if @book.save
       redirect "/books/#{@book.slug}"
     else
@@ -37,6 +37,7 @@ class BooksController < ApplicationController
   end
 
   post '/books/:slug' do
+    @user = current_user
     @book = Book.find_by_slug(params[:slug])
     @book.update(book: params[:book])
     @book.author = params[:author]

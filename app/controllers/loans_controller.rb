@@ -5,6 +5,7 @@ class LoansController < ApplicationController
   end
 
   post '/loans' do
+    @user = current_user
     @book = Book.find_by_slug(params[:slug])
     @loan = Loan.create(student_id: params[:student_id], book_id: params[:book_id])
     @book.update(book: params[:book])

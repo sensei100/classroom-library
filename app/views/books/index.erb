@@ -2,7 +2,7 @@
 <h2>Which book would you like to view?</h2>
 
   <ul>
-  <% Book.all.each do |book| %>
+  <% User.books.each do |book| %>
   <li><a href="/books/<%= book.slug %>"><%= book.name %></a></li>
   <% end %>
   </ul>
