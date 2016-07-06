@@ -4,13 +4,11 @@
 
 <h2>Click on the title that you would like to check out</h2>
 
-<form method="post" action="/books/<%= @book.slug %>">
-
-  <input type="hidden" name="_method" value="patch">
+<form method="post" action="/books/index">
 
   <% Book.all.each do |book| %>
 
-    <input type="radio" name="loans[book_ids][]" value="<book.name %>" id="<%= book.id %>"><%= book.name %></input><br>
+    <input type="radio" name="book_loan" value="<book.name %>" id="<%= book.id %>"><%= book.name %></input><br>
 
   <% end %>
 
@@ -20,7 +18,7 @@
 
   <% Student.all.each do |student| %>
 
-    <input type="radio" name="loans[student_ids][]" value="<student.name %>" id="<%= student.id %>"><%= student.name %></input><br>
+    <input type="radio" name="student_loan" value="<student.name %>" id="<%= student.id %>"><%= student.name %></input><br>
 
   <% end %>
 

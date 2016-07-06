@@ -5,9 +5,14 @@ class LoansController < ApplicationController
   end
 
   post '/loans' do
-    student_id = params.fetch('student_id').to_i()
-    book_id = params.fetch('book_id').to_i()
+    @book = Book.find_by_slug(params[:slug])
     @loan = Loan.create(student_id: params[:student_id], book_id: params[:book_id])
+    @book.update(book: params[:book])
+    @lendee = params[:student_id]
+    @book = Book.find_by_slug(params[:slug])
+    @book.checked_out = lendee
+    @book.save
+    redirect to '/books/index'
     redirect to "/loans/show"
   end
 
@@ -16,10 +21,6 @@ class LoansController < ApplicationController
   end
 
   patch '/loans/show' do
-    lendee = params[:student_id]
-    book = Book.find_by_slug(params[:slug])
-    book.checked_out = lendee
-    book.save
-    redirect to '/books/index'
+  
   end
 end

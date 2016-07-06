@@ -76,8 +76,7 @@ class BooksController < ApplicationController
   end
 
   post '/loans' do
-    student_id = params.fetch('student_id').to_i()
-    book_id = params.fetch('book_id').to_i()
+    @lendee = Student.name
     @loan = Loan.create(student_id: params[:student_id], book_id: params[:book_id])
     redirect to "/loans/show"
   end
