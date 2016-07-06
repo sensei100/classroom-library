@@ -10,7 +10,7 @@ class StudentsController < ApplicationController
   end
 
   post '/students' do
-    @student = Student.create(name: params[:name])
+    @student = Student.create(name: params[:name], user_id: session[:user_id])
     redirect to "/students/#{@student.name}"
   end
 

@@ -19,8 +19,5 @@ class LoansController < ApplicationController
   get '/loans/show' do
     erb :'loans/show'
   end
-
-  patch '/loans/show' do
   
-  end
 end

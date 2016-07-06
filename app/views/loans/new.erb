@@ -8,7 +8,9 @@
 
   <% Book.all.each do |book| %>
 
-    <input type="radio" name="book_loan" value="<book.name %>" id="<%= book.id %>"><%= book.name %></input><br>
+    <input type="radio" name="book_loan" value="<book.name %>" id="<%= book.id %>"><%= book.name %></input>
+
+  <br>
 
   <% end %>
 

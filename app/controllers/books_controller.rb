@@ -19,7 +19,7 @@ class BooksController < ApplicationController
 
   post '/books' do
     @user = current_user
-    @book = Book.create(name: params[:name], author: params[:author], genre: params[:genre], user_id: session[:user_id])
+    @book = Book.create(name: params[:name], author: params[:author], genre: params[:genre], user_id: session[:user_id], checked_out: params[:checked_out], student_id: params[:student_id]) 
     if @book.save
       redirect "/books/#{@book.slug}"
     else
@@ -69,28 +69,6 @@ class BooksController < ApplicationController
     @book = Book.find_by_slug(params[:slug])
     @book.delete
     redirect to '/books'
-  end
-
-    get '/loans' do
-    erb :'/loans/new'
-  end
-
-  post '/loans' do
-    @lendee = Student.name
-    @loan = Loan.create(student_id: params[:student_id], book_id: params[:book_id])
-    redirect to "/loans/show"
-  end
-
-  get '/loans/show' do
-    erb :'loans/show'
-  end
-
-  patch '/loans/show' do
-    @lendee = params[:student_id]
-    @book = Book.find_by_slug(params[:slug])
-    @book.checked_out = params[:checked_out]
-    @book.save
-    redirect to "/books/#{@book.slug}"
   end
 
 end
