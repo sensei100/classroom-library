@@ -19,27 +19,5 @@
 <br>
 <br>
 
-<h1>Check Out this book</h1>
-
-<br>
-
-<form method="post" action="/books/<%= @book.slug %>">
-
-  <input type="hidden" name="_method" value="patch">
-
-<h2>Who is checking this book out?</h2>
-
-  <% Student.all.each do |student| %>
-
-    <input type="radio" name="<%= @lendee %>" value="<student.name %>" id="<%= @lendee %>"><%= student.name %></input><br>
-
-  <% end %>
-
-  <br>
-
-  <input type="submit" name="Check Out">
-
-</form>
-
 <h2>Log Out</h2>
 <h4>To end your session, click <a href="/logout">here</a>.</h4>

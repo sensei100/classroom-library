@@ -4,6 +4,7 @@ class LoansController < ApplicationController
     if !logged_in?
       redirect to '/login'
     else
+      @session = session
       @loans = current_user.loans
       @books = current_user.books
       @students = current_user.students
@@ -13,13 +14,9 @@ class LoansController < ApplicationController
 
   post '/loans' do
     @user = current_user
-    @book = Book.find_by_slug(params[:slug])
-    @loan = @user.loan.create(student_id: params[:student_id], book_id: params[:book_id])
-    @book.update(book: params[:book])
+    @loan = @user.loans.create(student_id: params[:student_loan], book_id: params[:book_loan])
     @lendee = params[:student_id]
-    @book.checked_out = lendee
-    @book.save
-    redirect to '/books/index'
+    @loan.save
     redirect to "/loans/show"
   end
 
