@@ -3,28 +3,34 @@
 
 <h2>Click on the title that you would like to check out</h2>
 
-<form method="post" action="/loans">
+<form>
 
   <% @books.each do |book| %>
 
     <input type="radio" name="book_loan" value="<book.name %>" id="<%= book.id %>"><%= book.name %></input>
 
-  <br>
+</form>
+
+<br>
 
   <% end %>
 
-  <br>
+<br>
 
-   <h2>Who is checking this book out?</h2>
+<h2>Who is checking this book out?</h2>
 
   <% @students.each do |student| %>
 
-    <input type="radio" name="student_loan" value="<student.name %>" id="<%= student.id %>"><%= student.name %></input><br>
+    <form method="post" action="/loans">
+
+    <input type="hidden" name="_method" value="patch">
+
+    <input type="radio" name="lendee" value="<student.name %>" id="<%= student.id %>"><%= student.name %></input><br>
 
   <% end %>
 
   <br>
 
-  <input type="submit" name="Check Out">
+  <input type="submit" name="lend" value="Check Out">
 
 </form>

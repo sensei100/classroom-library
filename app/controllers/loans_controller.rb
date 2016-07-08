@@ -4,7 +4,6 @@ class LoansController < ApplicationController
     if !logged_in?
       redirect to '/login'
     else
-      @session = session
       @loans = current_user.loans
       @books = current_user.books
       @students = current_user.students
@@ -20,8 +19,16 @@ class LoansController < ApplicationController
     redirect to "/loans/show"
   end
 
+  patch '/loans' do
+    @lendee = params[:lendee]
+    book = Book.find_by_id(params[:id])
+    redirect to "/loans/show"
+  end
+
   get '/loans/show' do
     erb :'loans/show'
   end
   
 end
+
+
