@@ -1,8 +1,8 @@
-<h1><%= @book.name %> is currently checked out to <%= @student.name %></h1>
+
 
 
 <h4>Click the return button below to check the book back in.</h4>
-<form method="post" action="/loans/<%=@book.name%>/delete">
+<form method="post" action="/loans/<%= @loan.book.slug %>/delete">
   <input id="hidden" type="hidden" name="_method" value="delete">
   <input type="submit" value="Return">
 </form>

@@ -14,14 +14,20 @@ class LoansController < ApplicationController
   post '/loans' do
     @user = current_user
     @loan = @user.loans.create(student_id: params[:student_id], book_id: params[:book_id])
-    @lendee = params[:student_id]
     @loan.save
-    redirect to "/loans/show"
+    redirect to "/loans/#{@book.slug}"
   end
 
   get '/loans/show' do
-    @loan = Loan.find_by_id(book_id: params[:book_id])
+    @book = Book.find_by_slug(params[:slug])
+    @student = Student.find_by_name(params[:name])
     erb :'loans/show'
+  end
+
+  delete '/loans/:slug/delete' do
+    @book = Book.find_by_slug(params[:slug])
+    @book.delete
+    redirect to '/loans'
   end
   
 end

@@ -43,7 +43,6 @@ class BooksController < ApplicationController
     @book.author = params[:author]
     @book.genre = params[:genre]
     @book.user_id = params[:user_id]
-    @book.checked_out = params[:checked_out]
     @book.save
     redirect "/books/#{@book.slug}"
   end
