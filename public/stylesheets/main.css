@@ -127,6 +127,10 @@ Font
     padding-top: 20px;
     text-align: center;
   }
+
+  #check_out {
+    width: 100px;
+    margin-left: 15px;
 }
 
 @media screen and (max-width: 600px) {

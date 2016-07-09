@@ -13,7 +13,7 @@ class LoansController < ApplicationController
 
   post '/loans' do
     @user = current_user
-    @loan = @user.loans.create(student_id: params[:student_loan], book_id: params[:book_loan])
+    @loan = @user.loans.create(student_id: params[:student_id], book_id: params[:book_id])
     @lendee = params[:student_id]
     @loan.save
     redirect to "/loans/show"

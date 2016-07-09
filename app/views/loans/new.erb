@@ -7,7 +7,7 @@
 
   <% @books.each do |book| %>
 
-    <input type="radio" name="book_loan" value="<book.name %>" id="<%= book.id %>"><%= book.name %></input>
+    <input type="radio" name="book_id" value="<book.name %>" id="<%= book.id %>"><%= book.name %></input>
 
 </form>
 
@@ -25,13 +25,13 @@
 
     <input type="hidden" name="_method" value="patch">
 
-    <input type="radio" name="lendee" value="<student.name %>" id="<%= student.id %>"><%= student.name %></input><br>
+    <input type="radio" name="student_id" value="<student.name %>" id="<%= student.id %>"><%= student.name %></input><br>
 
   <% end %>
 
   <br>
 
-  <input type="submit" name="lend" value="Check Out">
+  <input id="check_out" type="submit" name="lend" value="Check Out">
 
 </form>
 
