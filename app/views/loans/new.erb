@@ -3,13 +3,11 @@
 
 <h2>Click on the title that you would like to check out</h2>
 
-<form>
+   <form method="post" action="/loans">
 
   <% @books.each do |book| %>
 
-    <input type="radio" name="book_id" value="<book.name %>" id="<%= book.id %>"><%= book.name %></input>
-
-</form>
+    <input type="radio" name="book_id" value="<%= book.id %>" id="<%= book.id %>"><%= book.name %></input>
 
 <br>
 
@@ -21,20 +19,16 @@
 
   <% @students.each do |student| %>
 
-    <form method="post" action="/loans">
-
-    <input type="hidden" name="_method" value="patch">
-
-    <input type="radio" name="student_id" value="<student.name %>" id="<%= student.id %>"><%= student.name %></input><br>
+    <input type="radio" name="student_id" value="<%= student.id %>" id="<%= student.id %>"><%= student.name %></input><br>
 
   <% end %>
 
-  <br>
+    <br>
 
-  <input id="check_out" type="submit" name="lend" value="Check Out">
+    <input id="check_out" type="submit" name="lend" value="Check Out">
 
-</form>
+  </form>
 
- <br>
+   <br>
 
   <p>Return to the <a href="/../welcome">home</a> page</p>

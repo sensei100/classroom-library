@@ -19,13 +19,8 @@ class LoansController < ApplicationController
     redirect to "/loans/show"
   end
 
-  patch '/loans' do
-    @lendee = params[:lendee]
-    book = Book.find_by_id(params[:id])
-    redirect to "/loans/show"
-  end
-
   get '/loans/show' do
+    @loan = Loan.find_by_id(book_id: params[:book_id])
     erb :'loans/show'
   end
   
