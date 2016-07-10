@@ -28,6 +28,15 @@ class LoansController < ApplicationController
     erb :'loans/show'
   end
 
+  patch '/loans/:slug/return' do
+    @book = Book.find_by_slug(params[:slug])
+    @book.author = params[:author]
+    @book.genre = params[:genre]
+    @book.save
+
+    redirect to "/books/#{@book.slug}"
+  end
+
   delete '/loans/:slug/delete' do
     @book = Book.find_by_slug(params[:slug])
     @book.delete

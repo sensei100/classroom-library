@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160709144044) do
+ActiveRecord::Schema.define(version: 20160710190526) do
 
   create_table "books", force: :cascade do |t|
     t.string  "name"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20160709144044) do
   end
 
   create_table "loans", force: :cascade do |t|
-    t.string  "loans"
+    t.string  "name"
     t.integer "user_id"
     t.integer "student_id"
     t.integer "book_id"
