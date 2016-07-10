@@ -13,9 +13,13 @@ class LoansController < ApplicationController
 
   post '/loans' do
     @user = current_user
-    @loan = @user.loans.create(student_id: params[:student_id], book_id: params[:book_id])
-    @loan.save
-    redirect to "/loans/#{@book.slug}"
+    @student = Student.find_by_name(params[:name])
+    @loan = @user.loans.create(loans: params[:book_name], student_id: params[:student_id], book_id: params[:book_id])
+    if @loan.save
+      redirect "/loans/#{@book.slug}"
+    else
+      redirect to '/books/new'
+    end
   end
 
   get '/loans/show' do

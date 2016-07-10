@@ -7,7 +7,7 @@
 
   <% @books.each do |book| %>
 
-    <input type="radio" name="book_id" value="<%= book.id %>" id="<%= book.id %>"><%= book.name %></input>
+    <input type="radio" name="book_id" value="<%= book.id %>" id="<%= book.id %>"><%= @book.slug %></input>
 
 <br>
 
