@@ -4,7 +4,7 @@
 
 <ul>
 <% @loans.each do |book| %>
-  <li><a href="/books/<%= book.slug %>"><%= book.name %></a></li>
+  <li><a href="/loans/<%= book.slug %>"><%= book.name %></a></li>
   <% end %>
   </ul>
 

@@ -5,6 +5,7 @@ class BooksController < ApplicationController
       redirect to '/login'
     else
       @books = current_user.books
+      @student = current_user.student
       erb :'books/index'
     end
   end
@@ -39,6 +40,7 @@ class BooksController < ApplicationController
   post '/books/:slug' do
     @user = current_user
     @book = Book.find_by_slug(params[:slug])
+    @student = current_user.student
     @book.update(book: params[:book])
     @book.author = params[:author]
     @book.genre = params[:genre]
