@@ -34,9 +34,7 @@ class LoansController < ApplicationController
 
   get '/loans/:slug' do
     @loans = current_user.loans
-    @student = Student.find_by_name(params[:name])
-    @books = Book.find_by_slug(params[:slug])
-
+    @book = Book.find_by_slug(params[:slug])
     erb :'/loans/show'
   end
 
@@ -44,13 +42,12 @@ class LoansController < ApplicationController
     @user = current_user
     @loan = Loan.find_by_name(name: @books.name)
     @book = Book.find_by_slug(params[:slug])
-    @student = Student.find_by_name(name: @student.name)
     @loan.save
   end
 
   delete '/loans/:slug/delete' do
-    @loan = current_user.loans
-    @books = Book.find_by_slug(params[:slug])
+    @book = Book.find_by_slug(params[:slug])
+    @loan = Loan.find_by(book_id: @book.id)
     @loan.delete
     redirect to '/loans'
   end
