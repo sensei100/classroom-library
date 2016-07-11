@@ -1,8 +1,18 @@
-<h1><%= @book.name %></h1>
+<h1><%= @books.name %> is currently checked out.</h1>
 
 <br>
 
-<h2>Checked out to: <%=  %></h2>
+<p>To check in this book, click the button below.</p>
+
+<form method="post" action="/loans/<%= @books.slug %>/delete">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Check In">
+</form>
 
 <br>
 <br>
+
+<p>Return to the <a href="/../welcome">home</a> page</p>
+
+
+
