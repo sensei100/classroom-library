@@ -19,7 +19,7 @@
 
   <% @students.each do |student| %>
 
-    <input type="radio" name="student_id" value="<%= student.id %>" id="<%= student.id %>"><%= student.name %></input><br>
+    <input type="radio" name="student_id" value="<%= student.id %>" id="<%= student.id %>" required><%= student.name %></input><br>
 
   <% end %>
 
