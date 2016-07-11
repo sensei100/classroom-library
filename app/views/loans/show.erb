@@ -1,8 +1,18 @@
+<h2>Current Books on Loan<h1>
 
+<br>
+
+<ul>
+<% @loans.each do |loan| %>
+  <li><a href="/books/<%= book.slug %>"><%= book.name %></a></li>
+  <% end %>
+  </ul>
+
+  <br>
 
 
 <h4>Click the return button below to check the book back in.</h4>
-<form method="post" action="/loans/<%= @book.slug %>/return">
+<form method="post" action="/loans/return">
   <input id="hidden" type="hidden" name="_method" value="patch">
   <input type="submit" name="return" value="Return">
 </form>

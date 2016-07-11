@@ -11,28 +11,40 @@ class LoansController < ApplicationController
     end
   end
 
-  post '/loans' do
-    @user = current_user
-    @student = Student.find_by_name(params[:name])
-    @loan = @user.loans.create(loans: params[:book_name], student_id: params[:student_id], book_id: params[:book_id])
-    if @loan.save
-      redirect "/loans/#{@book.slug}"
+  get '/loans/:slug' do
+    @book = Book.find_by_slug(params[:slug])
+    if logged_in?
+      erb :'loans/show'
     else
-      redirect to '/books/new'
+      redirect to '/login'
     end
   end
 
-  get '/loans/show' do
+  post '/loans' do
+    @user = current_user
     @book = Book.find_by_slug(params[:slug])
     @student = Student.find_by_name(params[:name])
+    @loan = @user.loans.create(name: params[:book_name], student_id: params[:student_id], book_id: params[:book_id])
+    @loan.save
+    redirect to "/loans/show"
+     
+  end
+
+  get '/loans/show' do
     erb :'loans/show'
   end
 
-  patch '/loans/:slug/return' do
+  post '/loans/show' do
+    @user = current_user
+    @loan = Loan.find_by_name(params[:name])
     @book = Book.find_by_slug(params[:slug])
-    @book.author = params[:author]
-    @book.genre = params[:genre]
-    @book.save
+    @loan.update(name: params[:name])
+    @loan.save
+    redirect to "/books/#{@book.slug}"
+  end
+
+  patch '/loans/return' do
+
 
     redirect to "/books/#{@book.slug}"
   end
