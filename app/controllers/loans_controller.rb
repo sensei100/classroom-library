@@ -1,6 +1,15 @@
 class LoansController < ApplicationController
 
-  get '/loans' do
+    get '/loans' do
+    @book = Book.find_by_slug(params[:slug])
+    if logged_in?
+      erb :'loans/index'
+    else
+      redirect to '/login'
+    end
+  end
+
+  get '/loans/new' do
     if !logged_in?
       redirect to '/login'
     else
@@ -11,14 +20,7 @@ class LoansController < ApplicationController
     end
   end
 
-  get '/loans/:slug' do
-    @book = Book.find_by_slug(params[:slug])
-    if logged_in?
-      erb :'loans/show'
-    else
-      redirect to '/login'
-    end
-  end
+
 
   post '/loans' do
     @user = current_user
@@ -31,21 +33,19 @@ class LoansController < ApplicationController
   end
 
   get '/loans/show' do
-    erb :'loans/show'
+    @loans = current_user.loans
+    erb :'/loans/show'
   end
 
   post '/loans/show' do
     @user = current_user
-    @loan = Loan.find_by_name(params[:name])
+    @loan = Loan.find_by_id(params[:id])
     @book = Book.find_by_slug(params[:slug])
-    @loan.update(name: params[:name])
     @loan.save
     redirect to "/books/#{@book.slug}"
   end
 
   patch '/loans/return' do
-
-
     redirect to "/books/#{@book.slug}"
   end
 

@@ -1,0 +1,13 @@
+<h2>Current Books on Loan<h1>
+
+<br>
+
+<ul>
+<% @loans.each do |book| %>
+  <li><a href="/books/<%= book.slug %>"><%= book.name %></a></li>
+  <% end %>
+  </ul>
+
+  <br>
+
+
