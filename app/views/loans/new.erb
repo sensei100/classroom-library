@@ -1,4 +1,7 @@
 <h1>Check Out</h1>
+
+<br>
+
 <h2>Which book would you like to check out?</h2>
 
 <h2>Click on the title that you would like to check out</h2>
@@ -7,7 +10,7 @@
 
   <% @books.each do |book| %>
 
-    <input type="radio" name="book_id" value="<%= book.id %>" id="<%= book.id %>"><%= book.name %></input>
+    <input type="radio" name="book_id" value="<%= book.id %>" id="<%= book.id %>" required><%= book.name %></input>
 
 <br>
 

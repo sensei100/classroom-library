@@ -27,9 +27,8 @@ class LoansController < ApplicationController
     @book = Book.find_by(id: params[:book_id])
     @student = Student.find_by_name(params[:student_id])
     @loan = @user.loans.create(name: @book.name, student_id: params[:student_id], book_id: params[:book_id])
-    @loan.save
     redirect to "/loans/#{@book.slug}"
-     
+ 
   end
 
   get '/loans/:slug' do
