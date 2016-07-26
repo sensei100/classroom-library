@@ -5,7 +5,6 @@ class BooksController < ApplicationController
       redirect to '/login'
     else
       @books = current_user.books
-      
       erb :'books/index'
     end
   end

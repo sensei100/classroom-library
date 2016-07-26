@@ -7,5 +7,7 @@ class Loan < ActiveRecord::Base
   belongs_to :user
   belongs_to :books
 
+  validates_presence_of :student_id, :book_id
+
   
 end

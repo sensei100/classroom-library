@@ -8,6 +8,7 @@ class ApplicationController < Sinatra::Base
     enable :sessions
     register Sinatra::ActiveRecordExtension
     set :session_secret, "password_security"
+    
   end
 
   get "/" do
