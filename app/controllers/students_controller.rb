@@ -11,8 +11,13 @@ class StudentsController < ApplicationController
 
   post '/students' do
     @user = current_user
-    @student = @user.students.create(name: params[:name])
-    redirect to "/students/#{@student.name}"
+    @student = @user.students.new(name: params[:name])
+    if @student.save
+      redirect to "/students/#{@student.name}"
+    else
+      flash[:message] = "Please complete all fields to continue."
+      erb :'/students/new'
+    end
   end
 
   get '/students/:name' do

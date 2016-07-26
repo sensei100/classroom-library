@@ -1,5 +1,11 @@
 <h1>Add a new Student</h1>
 
+<% if flash.has?(:message) %>
+  <div class="alert alert-danger">
+  <%= flash[:message] %>
+  </div>
+<% end %>
+
 <br>
 
 <form method="post" action="/students">
@@ -7,7 +13,7 @@
   <label for="name">Student Name:</label>
   <input type="text" name="name" id="name">
 
-  <input type="submit" id="add_student" name="add_student" value="Add" required>
+  <input type="submit" id="add_student" name="add_student" value="Add">
 
 </form>
 
