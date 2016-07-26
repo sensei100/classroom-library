@@ -1,12 +1,18 @@
+<% if flash.has?(:message) %>
+  <div class="alert alert-danger">
+  <%= flash[:message] %>
+  </div>
+<% end %>
+
 <h1>Login Here</h1>
 
 <form method="post" action="/login">
 
   <label for="username">Username:</label>
-  <input type="text" name="username" id="username" required>
+  <input type="text" name="username" id="username">
 
   <label for="password">Password</label>
-  <input type="password" name="password" id="password" required>
+  <input type="password" name="password" id="password">
 
   <input type="submit" name="Login" value="Log In">
 

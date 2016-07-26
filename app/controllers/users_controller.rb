@@ -38,6 +38,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect "/welcome"
     else
+      flash[:message] = "Please complete all fields to continue."
       erb :login
     end
   end
