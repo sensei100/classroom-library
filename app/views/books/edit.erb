@@ -10,7 +10,7 @@
       <label for="name">Name:</label>
     </div>
     <div class="col-md-6">
-      <input type="text" name="name" id="name" value="<%= @book.name %>">
+      <input type="text" name="name" id="name" value="<%= @book.name %> " required>
     </div>
  </div>
 
@@ -19,7 +19,7 @@
       <label for="author">Author:</label>
     </div>
     <div class="col-md-6">
-      <input type="text" name="author" id="author" value="<%= @book.author %>">
+      <input type="text" name="author" id="author" value="<%= @book.author %>" required>
     </div>
   </div>
 
@@ -28,11 +28,9 @@
         <label for="genre">Genre:</label>
     </div>
     <div class="col-md-6">
-      <input type="text" name="genre" id="genre" value="<%= @book.genre %>">
+      <input type="text" name="genre" id="genre" value="<%= @book.genre %>" required>
     </div>
   </div>
-
- 
 
   <input type="submit" value="Submit">
 

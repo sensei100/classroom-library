@@ -23,6 +23,7 @@ class BooksController < ApplicationController
     if @book.save
       redirect "/books/#{@book.slug}"
     else
+      flash[:message] = "Please complete all fields to continue."
       redirect to '/books/new'
     end
   end
@@ -44,8 +45,12 @@ class BooksController < ApplicationController
     @book.author = params[:author]
     @book.genre = params[:genre]
     @book.user_id = params[:user_id]
-    @book.save
+    if @book.save
     redirect "/books/#{@book.slug}"
+    else
+      flash[:message] = "Please complete all fields."
+      erb :"/books/#{@book.slug}/edit"
+    end
   end
 
   get '/books/:slug/edit' do
@@ -53,6 +58,7 @@ class BooksController < ApplicationController
     if logged_in?
       erb :'books/edit'
     else
+      flash[:message] = "Please login to continue."
       redirect to '/login'
     end
   end

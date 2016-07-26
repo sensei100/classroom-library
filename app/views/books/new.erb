@@ -2,6 +2,12 @@
 
 <br>
 
+<% if flash.has?(:message) %>
+  <div class="alert alert-danger">
+  <%= flash[:message] %>
+  </div>
+<% end %>
+
 <form method="post" action="/books">
 
   <div class="row">
@@ -9,7 +15,7 @@
       <label for="name">Title:</label>
     </div>
     <div class="col-md-6">
-      <input type="text" name="name" id="name" required>
+      <input type="text" name="name" id="name">
     </div>
   </div>
  
@@ -18,7 +24,7 @@
      <label for="author">Author:</label>
     </div>
     <div class="col-md-6">
-      <input type="text" name="author" id="author" required>
+      <input type="text" name="author" id="author">
     </div>
   </div>
  
@@ -27,7 +33,7 @@
       <label for="genre">Genre:</label>
     </div>
     <div class="col-md-6">
-      <input type="text" name="genre" id="genre" required>
+      <input type="text" name="genre" id="genre">
     </div>
   </div>
 
