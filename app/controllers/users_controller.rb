@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       flash[:message] = "Please complete all fields to continue."
       redirect '/signup'
     end
-    user = User.create(username: params[:username], email: params[:email], password: params[:password], number: params[:number])
+    user = User.create(username: params[:username], email: params[:email], password: params[:password])
     if user.username != "" && user.email != ""
       user.save
       session[:user_id] = user.id

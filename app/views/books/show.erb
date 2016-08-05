@@ -10,7 +10,17 @@
 
 <br>
 
+<% if @book.loans.empty? %>
+  <h2 id="available">Status: Available</h2>
+<% else %>
+  <h2 id="checked_out">Status: Checked Out</h2>
+<% end %>
+
+<br>
+
 <h2>Click <a href="/books/<%= @book.slug %>/edit">here</a> to edit this title.</h2>
+
+<br>
 
 <br>
 
