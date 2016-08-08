@@ -9,18 +9,14 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    if params[:password] == ""
-      flash[:message] = "Please complete all fields to continue."
-      redirect '/signup'
-    end
     user = User.create(username: params[:username], email: params[:email], password: params[:password])
-    if user.username != "" && user.email != ""
+    if user.username != "" && user.email != "" 
       user.save
       session[:user_id] = user.id
       redirect to "/welcome"
     else
       flash[:message] = "Please complete all fields to continue."
-      redirect to '/signup'
+      erb :signup
     end
   end
 
