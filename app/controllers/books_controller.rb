@@ -24,7 +24,7 @@ class BooksController < ApplicationController
       redirect "/books/#{@book.slug}"
     else
       flash[:message] = "Please complete all fields to continue."
-      redirect to '/books/new'
+      erb :'books/new'
     end
   end
 
