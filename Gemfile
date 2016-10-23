@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.2.4'
+ruby '2.3.1'
 gem 'sinatra'
 gem 'activerecord', :require => 'active_record'
 gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
@@ -11,7 +11,7 @@ gem 'shotgun'
 gem 'bcrypt'
 gem "tux"
 gem 'rack-flash3'
-gem 'pg'
+
 
 
 group :development, :test do
