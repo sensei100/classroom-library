@@ -11,4 +11,4 @@ use StudentsController
 use LoansController
 run ApplicationController
 
-$stdout.sync = true
+
