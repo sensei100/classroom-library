@@ -12,6 +12,7 @@ gem 'bcrypt'
 gem "tux"
 gem 'rack-flash3'
 gem 'pg'
+gem 'sqlite3'
 
 group :development, :test do
   gem 'rspec'
