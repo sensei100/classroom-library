@@ -12,4 +12,4 @@ else
    set :database, ENV['SINATRA_ENV']
 end
 require 'rack-flash'
-require 'app'
+require_all 'app'
