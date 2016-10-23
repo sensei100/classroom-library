@@ -10,6 +10,6 @@ if development?
   }
 else
    set :database, ENV['SINATRA_ENV']
-
+end
 require 'rack-flash'
 require_all 'app'
