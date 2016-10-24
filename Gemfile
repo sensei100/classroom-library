@@ -10,7 +10,7 @@ gem 'thin'
 gem 'shotgun'
 gem 'bcrypt'
 gem 'rack-flash3'
-
+gem 'pg'
 
 
 
@@ -23,6 +23,4 @@ group :development, :test do
   gem 'rack-test'
 end
 
-group :production do
-  gem 'pg'
-end
+
